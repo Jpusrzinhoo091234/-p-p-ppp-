@@ -22,6 +22,7 @@ body {
     color: var(--text-color);
     line-height: 1.6;
     min-height: 100vh;
+    padding-top: 80px;
 }
 
 /* Anúncio Topo */
@@ -45,10 +46,14 @@ body {
 
 /* Navbar */
 .navbar {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    z-index: 1000;
     background: var(--dark-bg);
     padding: 1rem 2rem;
-    border-bottom: 3px solid var(--primary-color);
-    box-shadow: var(--neon-shadow);
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
     display: flex;
     justify-content: space-between;
     align-items: center;
