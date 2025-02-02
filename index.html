@@ -3,258 +3,77 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>ANGELS STORE | Sua Loja de Games</title>
-    <link rel="stylesheet" href="./styles.css">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <title>Angels Store</title>
+    <link rel="stylesheet" href="styles.css">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600&display=swap" rel="stylesheet">
 </head>
 <body>
-    <div class="anuncio-topo">
-        🎮 Entrega instantânea 24h por dia! 💫 Pague no PIX e receba na hora! ⚡
-    </div>
-
     <header>
-        <nav class="navbar">
-            <div class="logo">
-                <h1><i class="fas fa-angel"></i> ANGELS STORE</h1>
-            </div>
-            <div class="nav-items">
-                <div class="auth-buttons">
-                    <button onclick="showAuthModal(); toggleAuthForm('login')" class="login-btn">
-                        <i class="fas fa-sign-in-alt"></i> Entrar
-                    </button>
-                    <button onclick="showAuthModal(); toggleAuthForm('register')" class="register-btn">
-                        <i class="fas fa-user-plus"></i> Cadastrar
-                    </button>
-                </div>
-                <a href="#ofertas"><i class="fas fa-tag"></i> Ofertas</a>
-                <div class="carrinho-container">
-                    <a href="#carrinho" class="carrinho-btn">
-                        <i class="fas fa-shopping-cart"></i>
-                        <span class="carrinho-contador" id="carrinho-quantidade">0</span>
-                    </a>
-                    <div class="carrinho-dropdown" id="carrinho-dropdown">
-                        <div class="carrinho-items" id="carrinho-items">
-                            <!-- Items do carrinho serão inseridos aqui via JavaScript -->
-                        </div>
-                        <div class="carrinho-total">
-                            <span>Total: R$ <span id="carrinho-total">0,00</span></span>
-                            <button class="checkout-btn">Finalizar Compra</button>
-                        </div>
-                    </div>
-                </div>
-                <a href="#conta" class="conta-btn"><i class="fas fa-user"></i> Minha Conta</a>
-            </div>
+        <div class="logo">
+            <span class="emoji">👼</span>
+            <h1>Angels Store</h1>
+        </div>
+        
+        <div class="search-bar">
+            <input type="text" id="search-input" placeholder="Buscar produtos...">
+            <button id="search-btn">🔍</button>
+        </div>
+
+        <nav>
+            <button class="category-btn active" data-category="todos">Todos</button>
+            <button class="category-btn" data-category="anime_fighters">Anime Fighters</button>
+            <button class="category-btn" data-category="free_fire">Free Fire</button>
         </nav>
+
+        <div class="header-actions">
+            <div class="cart-btn" id="cart-toggle">
+                <span class="emoji">🛒</span>
+                <span class="cart-count">0</span>
+            </div>
+        </div>
     </header>
 
-    <div class="categorias-menu">
-        <a href="#free-fire" class="categoria-item">
-            <span class="categoria-icon">��</span>
-            Free Fire
-            <div class="subcategorias">
-                <a href="#diamantes">💎 Diamantes</a>
-                <a href="#passes">🎯 Passes</a>
-                <a href="#itens">🎁 Itens</a>
-                <a href="#pacotes">📦 Pacotes</a>
-            </div>
-        </a>
-        <a href="#roblox" class="categoria-item">
-            <span class="categoria-icon">��</span>
-            Roblox
-            <div class="subcategorias">
-                <a href="#robux">💰 Robux</a>
-                <a href="#premium">👑 Premium</a>
-                <a href="#gift-cards">🎁 Gift Cards</a>
-            </div>
-        </a>
-        <a href="#blox-fruits" class="categoria-item">
-            <span class="categoria-icon">��</span>
-            Blox Fruits
-            <div class="subcategorias">
-                <a href="#frutas">🍊 Frutas</a>
-                <a href="#boosts">⚡ Boosts</a>
-                <a href="#gamepasses">🎮 Gamepasses</a>
-            </div>
-        </a>
-        <a href="#anime-fighters" class="categoria-item">
-            <span class="categoria-icon">⚔️</span>
-            Anime Fighters
-            <div class="subcategorias">
-                <a href="#gems">💎 Gems</a>
-                <a href="#vip">👑 VIP</a>
-                <a href="#pets">🐾 Pets</a>
-            </div>
-        </a>
-        <a href="#campeonatos" class="categoria-item">
-            <span class="categoria-icon">��</span>
-            Campeonatos
-            <div class="subcategorias">
-                <a href="#torneios-ff">🔥 Free Fire</a>
-                <a href="#torneios-roblox">🎮 Roblox</a>
-                <a href="#semanais">🎯 Torneios Semanais</a>
-            </div>
-        </a>
-        <a href="#assinaturas" class="categoria-item">
-            <span class="categoria-icon">📺</span>
-            Assinaturas
-            <div class="subcategorias">
-                <a href="#netflix">🎬 Netflix</a>
-                <a href="#disney">✨ Disney+</a>
-                <a href="#hbo">🎥 HBO Max</a>
-                <a href="#prime">📺 Prime</a>
-            </div>
-        </a>
-    </div>
+    <div id="notification" class="notification"></div>
 
     <main>
-        <section class="beneficios">
-            <div class="beneficio-item">
-                <i class="fas fa-bolt"></i>
-                <h3>⚡ Entrega Automática</h3>
-                <p>🚀 Receba em até 6 minutos</p>
-            </div>
-            <div class="beneficio-item">
-                <i class="fas fa-shield-alt"></i>
-                <h3>🔒 Site Seguro</h3>
-                <p>✅ Compra 100% Protegida</p>
-            </div>
-            <div class="beneficio-item">
-                <i class="fab fa-whatsapp"></i>
-                <h3>💬 Suporte no WhatsApp</h3>
-                <p>📱 Atendimento Imediato</p>
-            </div>
-            <div class="beneficio-item">
-                <i class="fas fa-pix"></i>
-                <h3>💰 Formas de Pagamento</h3>
-                <p>💸 Pagamento via PIX</p>
-            </div>
-        </section>
+        <div class="filters">
+            <select id="sort-select">
+                <option value="default">Ordenar por</option>
+                <option value="price-asc">Menor preço</option>
+                <option value="price-desc">Maior preço</option>
+                <option value="name">Nome</option>
+            </select>
+        </div>
+
+        <div class="products-grid" id="products-container"></div>
     </main>
 
-    <footer>
-        <div class="footer-content">
-            <div class="footer-section">
-                <h3>Sobre a ANGELS STORE</h3>
-                <p>Sua melhor opção em recargas e produtos digitais</p>
-                <div class="social-media">
-                    <a href="https://wa.me/5524981128510" class="whatsapp-link" target="_blank">
-                        <i class="fab fa-whatsapp"></i> WhatsApp
-                    </a>
-                    <a href="https://www.instagram.com/diario_duo._.ff/" class="instagram-link" target="_blank">
-                        <i class="fab fa-instagram"></i> Instagram
-                    </a>
+    <div class="cart-modal" id="cart-modal">
+        <div class="cart-content">
+            <div class="cart-header">
+                <h2>Seu Carrinho</h2>
+                <button class="close-btn" id="cart-close">×</button>
+            </div>
+            <div class="cart-items" id="cart-items"></div>
+            <div class="cart-footer">
+                <div class="cart-total">
+                    <span>Total:</span>
+                    <span id="cart-total">R$ 0,00</span>
                 </div>
-            </div>
-            <div class="footer-section">
-                <h3>💬 Atendimento</h3>
-                <ul>
-                    <li>📱 (24) 98112-8510</li>
-                    <li>⏰ Seg-Sex: 9h às 18h</li>
-                </ul>
-            </div>
-        </div>
-        <div class="footer-bottom">
-            <p>&copy; 2024 ANGELS STORE. Todos os direitos reservados.</p>
-        </div>
-    </footer>
-
-    <!-- Adicionar modal de login/cadastro -->
-    <div id="auth-modal" class="modal">
-        <div class="modal-content">
-            <span class="close-modal">&times;</span>
-            
-            <!-- Form de Login -->
-            <div id="login-form" class="auth-form">
-                <h2>Login</h2>
-                <form onsubmit="return handleLogin(event)">
-                    <div class="form-group">
-                        <label for="login-username">Nome de usuário</label>
-                        <input type="text" id="login-username" required>
-                    </div>
-                    <div class="form-group">
-                        <label for="login-password">Senha</label>
-                        <input type="password" id="login-password" required>
-                    </div>
-                    <button type="submit">Entrar</button>
-                </form>
-                <p>Não tem conta? <a href="#" onclick="toggleAuthForm('register')">Cadastre-se</a></p>
-            </div>
-
-            <!-- Form de Cadastro -->
-            <div id="register-form" class="auth-form" style="display: none;">
-                <h2>Cadastro</h2>
-                <form onsubmit="return handleRegister(event)">
-                    <div class="form-group">
-                        <label for="register-username">Nome de usuário</label>
-                        <input type="text" id="register-username" required>
-                    </div>
-                    <div class="form-group">
-                        <label for="register-password">Senha</label>
-                        <input type="password" id="register-password" required>
-                    </div>
-                    <div class="form-group">
-                        <label for="register-confirm-password">Confirmar Senha</label>
-                        <input type="password" id="register-confirm-password" required>
-                    </div>
-                    <button type="submit">Cadastrar</button>
-                </form>
-                <p>Já tem conta? <a href="#" onclick="toggleAuthForm('login')">Faça login</a></p>
+                <button class="checkout-btn" id="checkout-btn">
+                    Finalizar no WhatsApp
+                </button>
             </div>
         </div>
     </div>
 
-    <!-- Adicionar modal de perfil -->
-    <div id="profile-modal" class="modal">
-        <div class="modal-content profile-content">
-            <span class="close-modal" onclick="closeProfileModal()">&times;</span>
-            
-            <div class="profile-header">
-                <i class="fas fa-user-circle profile-avatar"></i>
-                <div class="profile-info">
-                    <h2 id="profile-username">Nome do Usuário</h2>
-                    <p>Membro desde: <span id="profile-member-since">Data</span></p>
-                </div>
-            </div>
-
-            <div class="profile-stats">
-                <div class="stat-item">
-                    <i class="fas fa-shopping-bag"></i>
-                    <h3>Total Gasto</h3>
-                    <p>R$ <span id="profile-total-spent">0,00</span></p>
-                </div>
-                <div class="stat-item">
-                    <i class="fas fa-box"></i>
-                    <h3>Compras</h3>
-                    <p><span id="profile-total-orders">0</span> pedidos</p>
-                </div>
-                <div class="stat-item">
-                    <i class="fas fa-star"></i>
-                    <h3>Status</h3>
-                    <p id="profile-status">Iniciante</p>
-                </div>
-            </div>
-
-            <div class="profile-sections">
-                <div class="section-header">
-                    <h3>Histórico de Compras</h3>
-                    <select id="order-filter">
-                        <option value="all">Todas as compras</option>
-                        <option value="recent">Últimos 30 dias</option>
-                        <option value="month">Este mês</option>
-                    </select>
-                </div>
-                
-                <div class="orders-list" id="orders-list">
-                    <!-- Pedidos serão inseridos aqui via JavaScript -->
-                </div>
-            </div>
-
-            <button onclick="handleLogout()" class="logout-btn">
-                <i class="fas fa-sign-out-alt"></i> Sair da Conta
-            </button>
+    <div class="preview-modal" id="preview-modal">
+        <div class="preview-content">
+            <button class="close-btn" id="preview-close">×</button>
+            <div id="preview-details"></div>
         </div>
     </div>
 
-    <script src="./script.js"></script>
+    <script src="script.js"></script>
 </body>
-</html> 
+</html>
